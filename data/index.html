@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BB8</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="/bb8.png">
+
+</head>
+<body>
+
+    <header>
+        <img src="bb8_v2.svg" alt="BB-8" class="header-logo">
+        <h1>BB-8 Stuff</h1>
+        <button id="en_btn">Enable</button>
+    </header>
+
+    <main>
+
+        <section class="card">
+            <h2>Motor</h2>
+
+            <div class="speed-row">
+                <label for="speedSlider">Speed</label>
+                <span id="speedValue">0</span>
+            </div>
+            <input id="speedSlider" type="range" min="-255" max="255" value="0">
+
+        </section>
+
+        <section class="card">
+            <h2>Flywheel</h2>
+
+            <div class="speed-row">
+                <label for="fwSlider">Speed</label>
+                <span id="fwValue">0</span>
+            </div>
+            <input id="fwSlider" type="range" min="0" max="180" value="90">
+
+        </section>
+
+        <section class="card">
+            <h2>PID</h2>
+
+            <div class="speed-row">
+                <label for="kpInput">kp</label>
+                <input id="kpInput" type="number" step="0.01" value="0">
+            </div>
+
+            <div class="speed-row">
+                <label for="kdInput">kd</label>
+                <input id="kdInput" type="number" step="0.01" value="0">
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Status</h2>
+
+            <p>Battery: <span id="battery">--</span> V</p>
+            <p>Acc_y: <span id="acc">--</span>g</p>
+            <p>Gyro_y: <span id="gyro">--</span></p>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
