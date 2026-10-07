@@ -4,7 +4,7 @@
 #include <LittleFS.h>
 #include "bb8_state.h"
 #include <ArduinoJson.h>
-
+#include "secrets.h"
 
 void handleWsEvent(AsyncWebSocket *server, 
                    AsyncWebSocketClient *client, 
@@ -31,6 +31,13 @@ void handleWsEvent(AsyncWebSocket *server,
 
             const char* cmd = doc["cmd"];
 
+            if (strcmp(cmd, "drive_mode") == 0) {
+                if (state.mode == DriveModes::MANUAL) 
+                    state.mode = DriveModes::FIGURE8;
+                else 
+                    state.mode = DriveModes::MANUAL;
+            }
+
             if (strcmp(cmd, "drv_speed") == 0 && state.enabled) {
                 state.des_vel = doc["value"].as<int>();
             }
@@ -52,7 +59,7 @@ void handleWsEvent(AsyncWebSocket *server,
 
 
 int Srv::begin() {
-    WiFi.begin(SSID, PASS);
+    WiFi.begin(WIFI_SSID, WIFI_PASS);
 
     Serial.print("Connecting");
 
@@ -69,7 +76,7 @@ int Srv::begin() {
     }
     else {
         Serial.print("Connected to ");
-        Serial.println(SSID);
+        Serial.println(WIFI_SSID);
     }
 
     Serial.print("IP: ");

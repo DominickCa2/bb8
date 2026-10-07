@@ -4,13 +4,11 @@
 #include "bb8_state.h"
 #include "mpu.h"
 #include "fw_motor.h"
-#include "drive_mode.h"
 
 DriveMotor drv;
 Srv srv;
 MPU mpu;
 FWMotor fw;
-DriveMode mode;
 
 // important stuff: 
 // acc_y
@@ -23,6 +21,7 @@ void setup() {
   mpu.begin();
   fw.begin();
   state.enabled = false;
+  state.mode = DriveModes::MANUAL;
 
   int srv_status = srv.begin();
   if (srv_status != 0) {

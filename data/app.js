@@ -8,9 +8,12 @@ const fwSlider = document.getElementById("fwSlider");
 const fwValue = document.getElementById("fwValue");
 const kpInput = document.getElementById("kpInput");
 const kdInput = document.getElementById("kdInput");
+const modeButton = document.getElementById("mode_btn");
+
 
 let enabled = false;
 let drv_speed = 0;
+let driveMode = "manual";
 const FW_MID_THR = 128;
 let fw_speed = FW_MID_THR;
 
@@ -34,6 +37,19 @@ function releaseSlider(slider, valueBox, cmd, resetValue, stateSetter) {
     slider.addEventListener("pointercancel", resetToValue);
     slider.addEventListener("blur", resetToValue);
 }
+
+modeButton.addEventListener("click", () => {
+    if (driveMode === "manual") {
+        driveMode = "figure8";
+        modeButton.textContent = "Mode: Figure 8";
+    }
+    else {
+        driveMode = "manual";
+        modeButton.textContent = "Mode: Manual";
+    }
+
+    sendSocketMessage("drive_mode", driveMode);
+});
 
 speedSlider.addEventListener("input", () => {
     speedValue.textContent = speedSlider.value;

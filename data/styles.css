@@ -68,6 +68,22 @@ header h1 {
     box-shadow: 0 0 0 4px rgba(211,47,47,0.25);
 }
 
+#mode_btn {
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background: #555;
+    min-width: 130px;
+    min-height: 48px;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+
 .speed-row {
     display: flex;
     justify-content: space-between;

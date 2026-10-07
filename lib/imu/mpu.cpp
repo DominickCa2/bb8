@@ -48,8 +48,8 @@ void convert(uint8_t *acc, uint8_t *gyro) {
     state.gyro_z = (gyro_z_raw / 32768.0) * 250.0;
 
     // DEBUG
-    Serial.printf("gyro_x: %.2f, gyro_y: %.2f, gyro_z: %.2f\n", state.gyro_x, state.gyro_y, state.gyro_z);
-    Serial.printf("acc_x: %.2f, acc_y: %.2f, acc_z: %.2f\n", state.acc_x, state.acc_y, state.acc_z);
+    // Serial.printf("gyro_x: %.2f, gyro_y: %.2f, gyro_z: %.2f\n", state.gyro_x, state.gyro_y, state.gyro_z);
+    // Serial.printf("acc_x: %.2f, acc_y: %.2f, acc_z: %.2f\n", state.acc_x, state.acc_y, state.acc_z);
 }
 
 void MPU::begin() {
